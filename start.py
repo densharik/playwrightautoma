@@ -83,7 +83,7 @@ def run_task_in_browser(task_module, browser_type, extension_path):
     finally:
         logger.info("Закрытие браузера")
         remove_temp_extension(temp_extension_path)
-        browser.close()
+        context.close()
 
 def run_tasks():
     print("Выберите расширение для установки:")

@@ -1,11 +1,23 @@
 from playwright.sync_api import sync_playwright
+from playwright.sync_api import BrowserContext
+import asyncio
+
 import logging
 
 logger = logging.getLogger(__name__)
 
 def main(context):
     
-    pages = context.pages
-    page_extension = pages[0]
-    print(pages)
-    page_extension.locator("#root > div:nth-child(1) > div > div > div > div:nth-child(2) > div:nth-child(3)").wait_for(state="visible").click()
+    
+
+
+    titles = [p.title() for p in context.pages]
+    while 'UniSat Wallet' not in titles:
+        titles = [p.title() for p in context.pages]
+
+    uni_page = context.pages[1]
+    uni_page.wait_for_load_state()
+
+    uni_page.click('text=I already have a wallet')
+
+    asyncio.sleep(50)
