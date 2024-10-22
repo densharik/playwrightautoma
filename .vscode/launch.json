@@ -1,0 +1,15 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Metamask Debug",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/start.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "env": {"PYTHONASYNCIODEBUG": "1"},
+            "args": ["--run_tasks"]
+        }
+    ]
+}
