@@ -38,3 +38,6 @@ user_data/
 
 metamask/
 unisat/
+
+*.txt
+unisat_copy/
