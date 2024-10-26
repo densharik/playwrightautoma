@@ -6,6 +6,8 @@ import logging
 import random
 import utils.data_manager as data_manager
 
+
+from dotenv import load_dotenv
 from logging.handlers import RotatingFileHandler
 from utils.extension_manager import create_temp_extension, remove_temp_extension
 
@@ -33,6 +35,10 @@ logger.addHandler(console_handler)
 
 
 folder_path = os.path.join(os.path.dirname(__file__), 'modules')
+
+load_dotenv('config.env')  # указываем конкретное имя файла
+
+
 if folder_path not in sys.path:
     sys.path.append(folder_path)
 
@@ -89,12 +95,12 @@ def run_tasks():
     print("Выберите расширение для установки:")
     for key, value in EXTENSIONS.items():
         print(f"{key}. {value['name']}")
-    choice_extension = input("Введите номер расширения (1 или 2): ")
+    choice_extension = "2" #input("Введите номер расширения (1 или 2): ")
 
     if choice_extension in EXTENSIONS:
         extension = EXTENSIONS[choice_extension]
         logger.info(f"Выбрано расширение: {extension['name']}")
-        extension_path = extension['path']
+        extension_path = "C:/Users/danil/Desktop/playwright/unisat"
         
     else:
         logger.error("Неверный выбор. Попробуйте снова.")
@@ -114,7 +120,7 @@ def run_tasks():
     for key, value in tasks.items():
         print(f"{key}. {value}")
     
-    choice = input("Введите номер таска для запуска: ")
+    choice = "1" #input("Введите номер таска для запуска: ")
     
     if choice in tasks:
         task_name = tasks[choice]

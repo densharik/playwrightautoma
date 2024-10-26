@@ -13,7 +13,6 @@ def read_file_to_list(file_path):
         return [line.strip() for line in file if line.strip()]
     
 def parse_proxy(proxy_string):
-    logging.info(f"Парсинг прокси: {proxy_string}")
     parts = proxy_string.split('@')
     if len(parts) == 2:
         ip_port, auth = parts

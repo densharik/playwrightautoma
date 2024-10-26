@@ -1,1 +1,40 @@
+# Файлы с конфиденциальными данными
+.env
+.env.local
+.env.*.local
+
+# Логи
+*.log
+script_log.log*
+logs/
+log/
+
+# Кэш Python
+**/__pycache__/
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Виртуальное окружение
 venv/
+env/
+.env/
+.venv/
+
+# Папки и файлы IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Временные файлы
+temp/
+tmp/
+.tmp/
+
+# Пользовательские данные
+user_data/
+*.session
+
+metamask/
+unisat/
