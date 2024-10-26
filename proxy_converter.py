@@ -1,5 +1,6 @@
 import re
 
+
 def split_proxy_string(proxy_str):
     """
     Функция для разбора строки прокси на отдельные компоненты.
@@ -28,6 +29,7 @@ def split_proxy_string(proxy_str):
     parts = [s.strip() for s in all_parts if s.strip()]
 
     return parts
+
 
 def parse_proxy_line(line):
     """
@@ -70,6 +72,7 @@ def parse_proxy_line(line):
         proxy_data['password'] = ''
 
     return proxy_data
+
 
 def process_proxies(input_file, output_file, output_format, format_type):
     processed_proxies = []
@@ -120,6 +123,7 @@ def process_proxies(input_file, output_file, output_format, format_type):
 
     return len(processed_proxies)
 
+
 def main():
     print("Proxy Parser")
 
@@ -141,6 +145,7 @@ def main():
         count = process_proxies(input_file, output_file, output_format, format_type)
     except Exception as e:
         print(f"Произошла ошибка: {str(e)}")
+
 
 if __name__ == "__main__":
     main()

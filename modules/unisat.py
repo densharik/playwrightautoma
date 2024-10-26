@@ -5,6 +5,7 @@ import logging
 
 logger = logging.getLogger(__name__)
 
+
 def get_all_titles(context):
     """
     Безопасно получает заголовки всех страниц
@@ -22,6 +23,7 @@ def get_all_titles(context):
             logger.debug(f"Не удалось получить заголовок страницы: {str(e)}")
             continue
     return titles
+
 
 def main(context):
     password = "password"

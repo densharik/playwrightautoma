@@ -3,6 +3,7 @@ import logging
 
 logger = logging.getLogger(__name__)
 
+
 def main(browser):
     page = browser.new_page()
     page.goto("chrome://extensions/")
@@ -23,6 +24,7 @@ def main(browser):
     # Здесь нужно добавить логику для дальнейших действий
     # Например, ожидание определенного элемента или выполнение других операций
     metamask.wait_for_selector("body")
+
 
 if __name__ == "__main__":
     with sync_playwright() as p:

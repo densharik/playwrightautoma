@@ -6,11 +6,9 @@ import logging
 import random
 import utils.data_manager as data_manager
 
-
 from dotenv import load_dotenv
 from logging.handlers import RotatingFileHandler
 from utils.extension_manager import create_temp_extension, remove_temp_extension
-
 from playwright.sync_api import sync_playwright
 
 EXTENSIONS = {
@@ -42,13 +40,16 @@ load_dotenv('config.env')  # указываем конкретное имя фа
 if folder_path not in sys.path:
     sys.path.append(folder_path)
 
+
 def run_cmd():
     current_script = os.path.abspath(__file__)
     cmd = f'python "{current_script}" --run_tasks'
     subprocess.Popen(cmd, creationflags=subprocess.CREATE_NEW_CONSOLE)
 
+
 def main(page=None):
     run_cmd()
+
 
 def run_task_in_browser(task_module, browser_type, extension_path):
     logger.info(f"Запуск браузера для модуля {task_module.__name__}")
@@ -61,13 +62,15 @@ def run_task_in_browser(task_module, browser_type, extension_path):
         extension_args = [
             f"--disable-extensions-except={temp_extension_path}",
             f"--load-extension={temp_extension_path}",
-            "--no-sandbox"
+            "--no-sandbox",
+            "--disable-blink-features=AutomationControlled"
         ]
 
         browser_options = {
             "user_data_dir": "./user_data",
             "headless": False,
             "args": extension_args
+            
         }
         # Добавление прокси в опции браузера, если он указан
         if proxy:
@@ -90,6 +93,7 @@ def run_task_in_browser(task_module, browser_type, extension_path):
         logger.info("Закрытие браузера")
         remove_temp_extension(temp_extension_path)
         context.close()
+
 
 def run_tasks():
     print("Выберите расширение для установки:")
@@ -142,6 +146,7 @@ def run_tasks():
             logger.error(f"Неожиданная ошибка: {str(e)}")
     else:
         logger.error("Неверный выбор. Попробуйте снова.")
+
 
 if __name__ == "__main__":
     if "--run_tasks" in sys.argv:

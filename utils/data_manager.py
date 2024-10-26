@@ -3,6 +3,7 @@ import logging
 
 logging.basicConfig(level=logging.INFO)
 
+
 def read_file_to_list(file_path):
     logging.info(f"Чтение файла: {file_path}")
     if not os.path.exists(file_path):
@@ -12,6 +13,7 @@ def read_file_to_list(file_path):
     with open(file_path, 'r') as file:
         return [line.strip() for line in file if line.strip()]
     
+
 def parse_proxy(proxy_string):
     parts = proxy_string.split('@')
     if len(parts) == 2:
@@ -28,17 +30,20 @@ def parse_proxy(proxy_string):
     logging.error(f"Неправильный формат прокси: {proxy_string}")
     return None
 
+
 def get_seed_btc():
     logging.info("Получение BTC ")
     current_dir = os.path.dirname(os.path.abspath(__file__))
     seed_btc_path = os.path.join(current_dir, 'seed_btc.txt')
     return read_file_to_list(seed_btc_path)
 
+
 def get_seed_evm():
     logging.info("Получение EVM")
     current_dir = os.path.dirname(os.path.abspath(__file__))
     seed_evm_path = os.path.join(current_dir, 'seed_evm.txt')
     return read_file_to_list(seed_evm_path)
+
 
 def get_proxies():
     logging.info("Получение проксей")
